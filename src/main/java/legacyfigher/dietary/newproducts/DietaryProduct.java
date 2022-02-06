@@ -12,41 +12,24 @@ public class DietaryProduct {
 
     private Description description;
 
-    private Integer counter;
+    private Availability availability;
 
     public DietaryProduct(BigDecimal price, Description description, Integer counter) {
         this.price = new Price(price);
         this.description = description;
-        this.counter = counter;
+        this.availability = new Availability(counter);
     }
 
     void decrementCounter() {
-        if
-        (counter == null) {
-            throw new IllegalStateException("null counter");
-        }
-        counter = counter - 1;
-        if (counter < 0) {
-            throw new IllegalStateException("Negative counter");
-        }
+        this.availability = availability.decrement();
     }
 
     void incrementCounter() {
-        if (counter == null) {
-            throw new IllegalStateException("null counter");
-        }
-        if (counter + 1 < 0) {
-            throw new IllegalStateException("Negative counter");
-        }
-        counter = counter + 1;
+        this.availability = availability.increment();
     }
 
     void changePriceTo(BigDecimal newPrice) {
-        if (counter == null) {
-            throw new IllegalStateException("null counter");
-        }
-        if
-        (counter > 0) {
+        if (availability.isAvailable()) {
             this.price = price.changeTo(newPrice);
         }
     }
@@ -56,7 +39,7 @@ public class DietaryProduct {
     }
 
     Integer getCounter() {
-        return counter;
+        return availability.asInt();
     }
 
     void replaceCharFromDesc(String charToReplace, String replaceWith) {
