@@ -7,12 +7,16 @@ public class Price {
 
     private final BigDecimal value;
 
-    public Price(BigDecimal value) {
+    private Price(BigDecimal value) {
         if (value == null || value.signum() <= 0) {
             throw new IllegalStateException("Invalid price");
         }
 
         this.value = value;
+    }
+
+    static Price of(BigDecimal value) {
+        return new Price(value);
     }
 
     Price changeTo(BigDecimal newPrice) {

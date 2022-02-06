@@ -7,9 +7,13 @@ public class Description {
     private final String description;
     private final String longDescription;
 
-    public Description(String description, String longDescription) {
+    private Description(String description, String longDescription) {
         this.description = description;
         this.longDescription = longDescription;
+    }
+
+    static Description of(String description, String longDescription) {
+        return new Description(description, longDescription);
     }
 
     Description replace(String oldValue, String newValue) {

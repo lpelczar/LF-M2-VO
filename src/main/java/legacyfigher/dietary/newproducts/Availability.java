@@ -6,12 +6,16 @@ public class Availability {
 
     private final Integer counter;
 
-    public Availability(Integer counter) {
+    private Availability(Integer counter) {
         if (counter == null) {
             throw new IllegalStateException("null counter");
         }
 
         this.counter = counter;
+    }
+
+    static Availability of(Integer counter) {
+        return new Availability(counter);
     }
 
     boolean isAvailable() {
