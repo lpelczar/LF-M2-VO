@@ -15,9 +15,9 @@ public class DietaryProduct {
 
     private Availability availability;
 
-    public DietaryProduct(BigDecimal price, Description description, Integer counter) {
+    public DietaryProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
         this.price = new Price(price);
-        this.description = description;
+        this.description = new Description(desc, longDesc);
         this.availability = new Availability(counter);
     }
 
