@@ -4,20 +4,19 @@ import java.util.Objects;
 
 public class Description {
 
-    private String description;
-    private String longDescription;
+    private final String description;
+    private final String longDescription;
 
     public Description(String description, String longDescription) {
         this.description = description;
         this.longDescription = longDescription;
     }
 
-    void replace(String oldValue, String newValue) {
+    Description replace(String oldValue, String newValue) {
         if (isInvalid()) {
             throw new IllegalStateException("null or empty desc");
         }
-        longDescription = longDescription.replace(oldValue, newValue);
-        description = description.replace(oldValue, newValue);
+        return new Description(description.replace(oldValue, newValue), longDescription.replace(oldValue, newValue));
     }
 
     String formatted() {

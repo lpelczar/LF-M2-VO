@@ -8,51 +8,37 @@ public class DietaryProduct {
 
     private UUID serialNumber = UUID.randomUUID();
 
-    private BigDecimal price;
+    private Price price;
 
     private Description description;
 
     private Integer counter;
 
     public DietaryProduct(BigDecimal price, Description description, Integer counter) {
-        this.price = price;
+        this.price = new Price(price);
         this.description = description;
         this.counter = counter;
     }
 
     void decrementCounter() {
-        if (price != null && price.signum() > 0) {
-
-            if
-            (counter == null) {
-                throw new IllegalStateException("null counter");
-            }
-            counter = counter - 1;
-            if (counter < 0) {
-                throw new IllegalStateException("Negative counter");
-            }
-        } else {
-            throw new IllegalStateException("Invalid price");
-
+        if
+        (counter == null) {
+            throw new IllegalStateException("null counter");
         }
-
+        counter = counter - 1;
+        if (counter < 0) {
+            throw new IllegalStateException("Negative counter");
+        }
     }
 
     void incrementCounter() {
-        if (price != null && price.signum() > 0) {
-            if (counter == null) {
-                throw new IllegalStateException("null counter");
-            }
-            if (counter +1 < 0) {
-                throw new IllegalStateException("Negative counter");
-            }
-            counter = counter + 1;
-
+        if (counter == null) {
+            throw new IllegalStateException("null counter");
         }
-        else {
-            throw new IllegalStateException("Invalid price");
-
+        if (counter + 1 < 0) {
+            throw new IllegalStateException("Negative counter");
         }
+        counter = counter + 1;
     }
 
     void changePriceTo(BigDecimal newPrice) {
@@ -61,15 +47,12 @@ public class DietaryProduct {
         }
         if
         (counter > 0) {
-            if (newPrice == null) {
-                throw new IllegalStateException("new price null");
-            }
-            this.price = newPrice;
+            this.price = price.changeTo(newPrice);
         }
     }
 
     BigDecimal getPrice() {
-        return price;
+        return price.asBigDecimal();
     }
 
     Integer getCounter() {
@@ -77,7 +60,7 @@ public class DietaryProduct {
     }
 
     void replaceCharFromDesc(String charToReplace, String replaceWith) {
-        this.description.replace(charToReplace, replaceWith);
+        this.description = description.replace(charToReplace, replaceWith);
     }
 
     String formatDesc() {
