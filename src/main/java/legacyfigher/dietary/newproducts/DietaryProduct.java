@@ -69,7 +69,7 @@ public class DietaryProduct {
     }
 
     void replaceCharFromDesc(String charToReplace, String replaceWith) {
-        this.description.replaceInDescription(charToReplace, replaceWith);
+        this.description.replace(charToReplace, replaceWith);
     }
 
     String formatDesc() {

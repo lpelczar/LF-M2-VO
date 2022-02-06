@@ -12,7 +12,7 @@ public class Description {
         this.longDescription = longDescription;
     }
 
-    void replaceInDescription(String oldValue, String newValue) {
+    void replace(String oldValue, String newValue) {
         if (isInvalid()) {
             throw new IllegalStateException("null or empty desc");
         }
