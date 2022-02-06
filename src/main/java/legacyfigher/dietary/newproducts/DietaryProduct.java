@@ -10,12 +10,15 @@ public class DietaryProduct {
 
     private BigDecimal price;
 
-    private String desc;
-    private String longDesc;
+    private Description description;
 
     private Integer counter;
 
-
+    public DietaryProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
+        this.price = price;
+        this.description = new Description(desc, longDesc);
+        this.counter = counter;
+    }
 
     void decrementCounter() {
         if (price != null && price.signum() > 0) {
@@ -33,13 +36,6 @@ public class DietaryProduct {
 
         }
 
-    }
-
-    public DietaryProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
-        this.price = price;
-        this.desc = desc;
-        this.longDesc = longDesc;
-        this.counter = counter;
     }
 
     void incrementCounter() {
@@ -73,23 +69,11 @@ public class DietaryProduct {
     }
 
     void replaceCharFromDesc(String charToReplace, String replaceWith) {
-        if (longDesc == null || longDesc.isEmpty() ||
-
-                desc == null || desc.isEmpty()) {
-            throw new IllegalStateException("null or empty desc");
-        }
-        longDesc = longDesc.replace(charToReplace, replaceWith);
-        desc = desc.replace(charToReplace, replaceWith);
+        this.description.replaceInDescription(charToReplace, replaceWith);
     }
 
     String formatDesc() {
-        if (longDesc == null ||
-                longDesc.isEmpty() ||
-                desc == null
-                || desc.isEmpty() ) {
-            return "";
-        }
-        return desc + " *** " + longDesc;
+        return description.formatted();
     }
 
 
