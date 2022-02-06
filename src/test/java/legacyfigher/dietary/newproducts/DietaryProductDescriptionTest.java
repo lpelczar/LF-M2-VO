@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductDescriptionTest {
+class DietaryProductDescriptionTest {
 
     @Test
     void shouldFormatDescription() {
@@ -25,7 +25,7 @@ class ProductDescriptionTest {
     @Test
     void shouldReplaceCharacterInDescription() {
         //given
-        OldProduct product = aProduct("Nicely crafted Coffee", "Coffee");
+        DietaryProduct product = aProduct("Nicely crafted Coffee", "Coffee");
 
         //when
         product.replaceCharFromDesc("Coffee", "Beans");
@@ -51,8 +51,8 @@ class ProductDescriptionTest {
                 () -> aProduct("", "").replaceCharFromDesc("Coffee", "Beans"));
     }
 
-    OldProduct aProduct(String longDesc, String desc) {
-        return new OldProduct(new BigDecimal(1), desc, longDesc, 1);
+    DietaryProduct aProduct(String longDesc, String desc) {
+        return new DietaryProduct(new BigDecimal(1), desc, longDesc, 1);
     }
 
 }

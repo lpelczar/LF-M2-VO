@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 
-public class OldProduct {
+public class DietaryProduct {
 
     UUID serialNumber = UUID.randomUUID();
 
@@ -35,7 +35,7 @@ public class OldProduct {
 
     }
 
-    public OldProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
+    public DietaryProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
         this.price = price;
         this.desc = desc;
         this.longDesc = longDesc;
