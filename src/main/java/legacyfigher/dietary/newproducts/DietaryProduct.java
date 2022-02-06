@@ -68,6 +68,14 @@ public class DietaryProduct {
         }
     }
 
+    BigDecimal getPrice() {
+        return price;
+    }
+
+    Integer getCounter() {
+        return counter;
+    }
+
     void replaceCharFromDesc(String charToReplace, String replaceWith) {
         this.description.replace(charToReplace, replaceWith);
     }

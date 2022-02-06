@@ -2,30 +2,30 @@ package legacyfigher.dietary.newproducts;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static legacyfigher.dietary.newproducts.Fixtures.aProductWithDescription;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DietaryProductDescriptionTest {
 
     @Test
     void shouldFormatDescription() {
         // expect
-        assertEquals(aProduct("Nicely crafted beans", "Coffee").formatDesc(), "Coffee *** Nicely crafted beans");
-        assertEquals(aProduct("", "Coffee").formatDesc(), "");
-        assertEquals(aProduct("Nicely crafted beans", "").formatDesc(), "");
-        assertEquals(aProduct("Nicely crafted beans", null).formatDesc(), "");
-        assertEquals(aProduct(null, "Coffee").formatDesc(), "");
-        assertEquals(aProduct(null, null).formatDesc(), "");
-        assertEquals(aProduct(null, "").formatDesc(), "");
-        assertEquals(aProduct("", null).formatDesc(), "");
-        assertEquals(aProduct("", "").formatDesc(), "");
+        assertEquals(aProductWithDescription("Nicely crafted beans", "Coffee").formatDesc(), "Coffee *** Nicely crafted beans");
+        assertEquals(aProductWithDescription("", "Coffee").formatDesc(), "");
+        assertEquals(aProductWithDescription("Nicely crafted beans", "").formatDesc(), "");
+        assertEquals(aProductWithDescription("Nicely crafted beans", null).formatDesc(), "");
+        assertEquals(aProductWithDescription(null, "Coffee").formatDesc(), "");
+        assertEquals(aProductWithDescription(null, null).formatDesc(), "");
+        assertEquals(aProductWithDescription(null, "").formatDesc(), "");
+        assertEquals(aProductWithDescription("", null).formatDesc(), "");
+        assertEquals(aProductWithDescription("", "").formatDesc(), "");
     }
 
     @Test
     void shouldReplaceCharacterInDescription() {
         //given
-        DietaryProduct product = aProduct("Nicely crafted Coffee", "Coffee");
+        DietaryProduct product = aProductWithDescription("Nicely crafted Coffee", "Coffee");
 
         //when
         product.replaceCharFromDesc("Coffee", "Beans");
@@ -38,21 +38,17 @@ class DietaryProductDescriptionTest {
     void shouldFailReplacingCharacterInDescription() {
         //expect
         assertThrows(IllegalStateException.class,
-                () -> aProduct("", "Coffee").replaceCharFromDesc("Coffee", "Beans"));
+                () -> aProductWithDescription("", "Coffee").replaceCharFromDesc("Coffee", "Beans"));
         assertThrows(IllegalStateException.class,
-                () -> aProduct("Nicely crafted Coffee", "").replaceCharFromDesc("Coffee", "Beans"));
+                () -> aProductWithDescription("Nicely crafted Coffee", "").replaceCharFromDesc("Coffee", "Beans"));
         assertThrows(IllegalStateException.class,
-                () -> aProduct("", null).replaceCharFromDesc("Coffee", "Beans"));
+                () -> aProductWithDescription("", null).replaceCharFromDesc("Coffee", "Beans"));
         assertThrows(IllegalStateException.class,
-                () -> aProduct(null, "").replaceCharFromDesc("Coffee", "Beans"));
+                () -> aProductWithDescription(null, "").replaceCharFromDesc("Coffee", "Beans"));
         assertThrows(IllegalStateException.class,
-                () -> aProduct(null, null).replaceCharFromDesc("Coffee", "Beans"));
+                () -> aProductWithDescription(null, null).replaceCharFromDesc("Coffee", "Beans"));
         assertThrows(IllegalStateException.class,
-                () -> aProduct("", "").replaceCharFromDesc("Coffee", "Beans"));
-    }
-
-    DietaryProduct aProduct(String longDesc, String desc) {
-        return new DietaryProduct(new BigDecimal(1), new Description(desc, longDesc), 1);
+                () -> aProductWithDescription("", "").replaceCharFromDesc("Coffee", "Beans"));
     }
 
 }
