@@ -6,14 +6,14 @@ import java.util.UUID;
 
 public class DietaryProduct {
 
-    UUID serialNumber = UUID.randomUUID();
+    private UUID serialNumber = UUID.randomUUID();
 
-    BigDecimal price;
+    private BigDecimal price;
 
     private String desc;
-    String longDesc;
+    private String longDesc;
 
-    Integer counter;
+    private Integer counter;
 
 
 
