@@ -1,5 +1,7 @@
 package legacyfigher.dietary.newproducts;
 
+import java.util.Objects;
+
 public class Availability {
 
     private final Integer counter;
@@ -35,4 +37,16 @@ public class Availability {
         return new Availability(counter + 1);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Availability that = (Availability) o;
+        return Objects.equals(counter, that.counter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(counter);
+    }
 }

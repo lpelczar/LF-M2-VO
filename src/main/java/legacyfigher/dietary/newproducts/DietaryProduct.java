@@ -1,6 +1,7 @@
 package legacyfigher.dietary.newproducts;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -50,5 +51,16 @@ public class DietaryProduct {
         return description.formatted();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DietaryProduct that = (DietaryProduct) o;
+        return Objects.equals(serialNumber, that.serialNumber) && Objects.equals(price, that.price) && Objects.equals(description, that.description) && Objects.equals(availability, that.availability);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(serialNumber, price, description, availability);
+    }
 }

@@ -1,10 +1,11 @@
 package legacyfigher.dietary.newproducts;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Price {
 
-    private BigDecimal value;
+    private final BigDecimal value;
 
     public Price(BigDecimal value) {
         if (value == null || value.signum() <= 0) {
@@ -20,5 +21,18 @@ public class Price {
 
     BigDecimal asBigDecimal() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Price price = (Price) o;
+        return Objects.equals(value, price.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
