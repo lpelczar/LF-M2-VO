@@ -14,9 +14,9 @@ public class DietaryProduct {
 
     private Integer counter;
 
-    public DietaryProduct(BigDecimal price, String desc, String longDesc, Integer counter) {
+    public DietaryProduct(BigDecimal price, Description description, Integer counter) {
         this.price = price;
-        this.description = new Description(desc, longDesc);
+        this.description = description;
         this.counter = counter;
     }
 

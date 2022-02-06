@@ -52,7 +52,7 @@ class DietaryProductDescriptionTest {
     }
 
     DietaryProduct aProduct(String longDesc, String desc) {
-        return new DietaryProduct(new BigDecimal(1), desc, longDesc, 1);
+        return new DietaryProduct(new BigDecimal(1), new Description(desc, longDesc), 1);
     }
 
 }
