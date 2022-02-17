@@ -1,4 +1,4 @@
 # LF-M2-VO
-Refactoring to Value Object's (DDD)
+Legacy refactoring to Value Object (DDD)
 
 Solved problem: Duplication of validation logic
